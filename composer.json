@@ -1,0 +1,23 @@
+{
+    "name": "smidu/php-sql-query-builder",
+    "description": "SQL Query Builder",
+    "type": "library",
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^5.7"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maciej Śliwiński",
+            "email": "kontakt@smid.pl"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SqlQueryBuilder\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "version": "1.0"
+}
