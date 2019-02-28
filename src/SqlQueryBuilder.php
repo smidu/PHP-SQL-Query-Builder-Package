@@ -58,7 +58,9 @@ class SqlQueryBuilder
 
         foreach ($objects as $object) {
 
-            $whereValues[] = $object->{$whereColumnName};
+            if (!in_array($object->{$whereColumnName}, $whereValues)) {
+                $whereValues[] = $object->{$whereColumnName};
+            }
 
         }
 
