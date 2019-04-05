@@ -70,25 +70,25 @@ class SqlQueryBuilder
     private function buildInsideCases($updateColumn, $rules)
     {
         if (key($rules) == $updateColumn) {
-            return $rules[key($rules)] . " ";
+            return addslashes($rules[key($rules)]) . "\" ";
         }
 
         $caseName = key(json_decode(key($rules)));
 
         $case = "CASE $caseName ";
-
+        
         foreach ($rules as $columnName => $nextRules) {
 
             $ruleColumn = json_decode($columnName, true);
 
-            $case .= "WHEN " . $ruleColumn[key($ruleColumn)] . " THEN ";
+            $case .= "WHEN \"" . $ruleColumn[key($ruleColumn)] . "\" THEN \"";
 
             $case .= $this->buildInsideCases($updateColumn, $nextRules);
-    
+            
         }
 
         $case .= "ELSE $updateColumn END ";
-
+        
         return $case;
     }
 
