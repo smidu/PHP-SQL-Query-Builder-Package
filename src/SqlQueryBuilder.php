@@ -125,9 +125,9 @@ class SqlQueryBuilder
 
     private function buildMultidimensionalArray(string $path): array
     {
-        $separator = '/';
-
-        $pos = strpos($path, $separator);
+        preg_match('#(?<!\\\\)\/#', $path, $matches, PREG_OFFSET_CAPTURE);
+        
+        $pos = isset($matches[0][1]) ? $matches[0][1] : false;
 
         if ($pos === false) {
             return json_decode($path, true);
