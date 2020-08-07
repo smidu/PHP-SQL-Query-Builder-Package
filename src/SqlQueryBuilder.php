@@ -70,7 +70,7 @@ class SqlQueryBuilder
     private function buildInsideCases($updateColumn, $rules)
     {
         if (key($rules) == $updateColumn) {
-            if($rules[key($rules)] == null) {
+            if($rules[key($rules)] === null) {
                 return  " NULL ";
             }
             return "\"" . addslashes($rules[key($rules)]) . "\" ";
