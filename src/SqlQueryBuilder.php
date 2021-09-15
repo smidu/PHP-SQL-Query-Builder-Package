@@ -73,7 +73,15 @@ class SqlQueryBuilder
             if($rules[key($rules)] === null) {
                 return  " NULL ";
             }
-            return "\"" . addslashes($rules[key($rules)]) . "\" ";
+
+            $rule = $rules[key($rules)];
+
+            if(is_array($rule))
+            {
+                $rule = end($rule);
+            }
+            
+            return "\"" . addslashes($rule) . "\" ";
         }
 
         $caseName = key(json_decode(key($rules)));
